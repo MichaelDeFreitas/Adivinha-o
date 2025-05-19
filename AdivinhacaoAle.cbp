@@ -1,38 +1,98 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="AdivinhacaoAle" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/AdivinhacaoAle" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/AdivinhacaoAle" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions />
-	</Project>
-</CodeBlocks_project_file>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+    srand(time(0));
+    int correto = rand() % 50 + 1, palpite, selecionado;
+    bool acertou = false;
+
+    string nome;
+
+    cout << "*************************" << endl;
+    cout << "****      MENU       ****" << endl;
+    cout << "*************************" << endl;
+    cout << "Escolha a dificulade: " << endl;
+    cout << "1 - DIFICIL" << endl;
+    cout << "2 - MEDIO" << endl;
+    cout << "3 - FACIL" << endl;
+    cin >> selecionado;
+
+    switch (selecionado){
+    case 1:
+            for(int i = 1; i < 4; i++){
+    cout << "\nEssa sera sua " << i << " tentativa para adivinhar o numero de 1 a 50: " << endl;
+    cin >> palpite;
+
+    if (palpite == correto){
+        cout << "O valor esta correto" << endl;
+        acertou = true;
+          break;
+    }else if(palpite != correto) {
+        if (palpite < correto) {
+        cout << "O valor esta errado, mais para cima" << endl;
+        }else  {
+        cout << "O Valor esta errado, mais para baixo" << endl;
+        }
+        if (palpite <= 0){
+            cout << "O valor nao pode ser 0 ou negativo" << endl;
+        }
+    }
+}
+break;
+    case 2:
+    for(int i = 0; i<6; i++){
+    cout << "\nEssa sera sua " << i << " tentativa para adivinhar o numero de 1 a 50: " << endl;
+    cin >> palpite;
+
+    if (palpite == correto){
+        cout << "O valor esta correto" << endl;
+        acertou = true;
+        break;
+    }else if(palpite != correto) {
+        if (palpite < correto) {
+        cout << "O valor esta errado, mais para cima" << endl;
+        }else {
+        cout << "O Valor esta errado, mais para baixo" << endl;
+        }
+       if (palpite <= 0){
+            cout << "O valor nao pode ser 0 ou negativo" << endl;
+            i--;
+            continue;
+        }
+    }
+}
+break;
+    case 3:
+        for(int i = 0; i < 11; i++){
+    cout << "\nEssa sera sua " << i << " tentativa para adivinhar o numero de 1 a 50: " << endl;
+    cin >> palpite;
+
+    if (palpite == correto){
+        cout << "O valor esta correto" << endl;
+        acertou = true;
+        break;
+    }else if(palpite != correto) {
+        if (palpite < correto) {
+        cout << "O valor esta errado, mais para cima" << endl;
+        }else  {
+        cout << "O Valor esta errado, mais para baixo" << endl;
+        }
+        if (palpite <= 0){
+            cout << "O valor nao pode ser 0 ou negativo" << endl;
+            i--;
+            continue;
+        }
+    }
+}
+break;
+}
+if (!acertou && (selecionado >= 1 && selecionado <= 3)) {
+    cout << "\nSuas tentativas acabaram. O numero correto era: " << correto << endl;
+}
+
+    return 0;
+}
